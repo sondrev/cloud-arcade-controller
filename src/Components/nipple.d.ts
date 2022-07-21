@@ -306,7 +306,22 @@ type JoystickEventTypes =
     target: Collection;
 }
 
-interface ReactNippleProps {
+class JoystickManager {
+    create(options?: JoystickManagerOptions): JoystickManager;
+
+    on(
+        type: JoystickManagerEventTypes | JoystickManagerEventTypes[],
+        handler: (evt: EventData, data: JoystickOutputData) => void
+    ): void;
+    off(
+        type: JoystickManagerEventTypes | JoystickManagerEventTypes[],
+        handler: (evt: EventData, data: JoystickOutputData) => void
+    ): void;
+    get(identifier: number): Joystick;
+    destroy(): void;
+}
+
+interface Joystick {
     on(
         type: JoystickEventTypes | JoystickEventTypes[],
         handler: (evt: EventData, data: JoystickOutputData) => void

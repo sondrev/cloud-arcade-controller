@@ -1,6 +1,5 @@
 import React from "react";
-import ReactNipple from "react-nipple";
-import 'react-nipple/lib/styles.css';
+import Nipple from "./Nipple";
 
 const defaultOptions = { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
 const bigOpts = { mode: 'static', position: { top: '50%', left: '50%' } , size: 500}
@@ -26,7 +25,7 @@ export default class Controller extends React.Component<IProps, IState> {
             joySize: 200
         }
 
-        const joy = <ReactNipple
+        const joy = <Nipple
             options={{ mode: 'static', position: { top: '50%', left: '50%' } , size: this.state.joySize}}
             style={{
                 outline: '1px dashed red',
@@ -50,7 +49,7 @@ export default class Controller extends React.Component<IProps, IState> {
     render() {
         const joySize2 = this.joySize+0
         console.log("joySize2", joySize2)
-        const joy = <ReactNipple
+        const joy = <Nipple
             options={{ mode: 'static', position: { top: '50%', left: '50%' } , size: joySize2}}
             style={{
                 width: 150,
