@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="470a8aee-436c-4370-8ec6-b95757bbfd71" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/react-screen-orientation.d.ts" afterDir="false" />
+    <list default="true" id="470a8aee-436c-4370-8ec6-b95757bbfd71" name="Changes" comment="create-react-app">
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/FullScreenWrapper.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/MainPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/Networkmanager.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/network.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/socket-requests.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/socket-responses.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Controller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Controller.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +39,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CDWlaCgt5YXOopSz4b6JXshutm" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,11 +54,18 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/types" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/Components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../src/cloud-arcade-controller" />
       <recent name="$PROJECT_DIR$/src/Components" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -58,7 +78,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658337788515</updated>
-      <workItem from="1658337790515" duration="24712000" />
+      <workItem from="1658337790515" duration="27191000" />
+      <workItem from="1658690909377" duration="13270000" />
+      <workItem from="1658832398030" duration="599000" />
+      <workItem from="1658833186584" duration="652000" />
+      <workItem from="1658930325587" duration="4851000" />
     </task>
     <task id="LOCAL-00001" summary="create-react-app">
       <created>1658337858419</created>

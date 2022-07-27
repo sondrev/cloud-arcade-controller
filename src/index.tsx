@@ -1,15 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import FullScreenWrapper from './Components/FullScreenWrapper';
 import reportWebVitals from './reportWebVitals';
+import { ContextState } from './types';
+import { SocketContext } from './context/network';
+import Networkmanager from './Service/Networkmanager'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const socketvalue: ContextState = {
+    networkManager: new Networkmanager()
+};
 root.render(
   <React.StrictMode>
-    <App />
+      <SocketContext.Provider value={socketvalue}>
+          <FullScreenWrapper />
+      </SocketContext.Provider>
   </React.StrictMode>
 );
 

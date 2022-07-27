@@ -10,32 +10,22 @@ function App() {
   const handle = useFullScreenHandle();
 
   if (window?.screen?.orientation) window.screen.orientation.onchange = function(e) {
-      console.log(`Orientation change. Orentiation ${window.screen.orientation.angle}`)
+      //console.log(`Orientation change. Orentiation ${window.screen.orientation.angle}`)
   }
 
-  return (
+    const onLockOrientation = (val:any) => {
+        console.log("onlockor",val)
+    }
+
+    return (
       <div>
-          <DeviceOrientation lockOrientation={'landscape'}>
-              {/* Will only be in DOM in landscape */}
-              <Orientation orientation='landscape' alwaysRender={false}>
-                  <div>
-                      <button onClick={handle.enter} id="enter-fullscreen-button">
-                           Fullscreen!
-                      </button>
+          <button onClick={handle.enter} id="enter-fullscreen-button">
+               Enter Fullscreen!
+          </button>
 
-                      <FullScreen handle={handle}>
-                          <Controller />
-
-                      </FullScreen>
-                  </div>
-              </Orientation>
-              {/* Will stay in DOM, but is only visible in portrait */}
-              <Orientation orientation='portrait'>
-                  <div>
-                      <p>Please rotate your phone</p>
-                  </div>
-              </Orientation>
-          </DeviceOrientation>
+          <FullScreen handle={handle}>
+              <Controller />
+          </FullScreen>
       </div>
   );
 }

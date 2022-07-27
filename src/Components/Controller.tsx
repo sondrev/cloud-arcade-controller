@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext, useState } from "react";
+import { SocketContext } from "../context/network";
 import Nipple from "./Nipple";
 
 const defaultOptions = { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
@@ -14,50 +15,30 @@ interface IState {
     joySize: number;
 }
 
-export default class Controller extends React.Component<IProps, IState> {
+export default function Controller() {
 
-    joySize = 200
-    constructor(props: IProps) {
-        super(props);
+    const [joySize, setJoySize] = useState(200)
 
-        this.state = {
-            joyOpts: defaultOptions,
-            joySize: 200
-        }
+    const context = useContext(SocketContext);
 
-        const joy = <Nipple
-            options={{ mode: 'static', position: { top: '50%', left: '50%' } , size: this.state.joySize}}
-            style={{
-                outline: '1px dashed red',
-                width: 150,
-                height: 150
-                // if you pass position: 'relative', you don't need to import the stylesheet
-            }}
-            onMove={(evt : JoystickEventTypes, data: JoystickOutputData) => this.onMove(evt,data)}
-            onEnd={(evt : JoystickEventTypes, data: JoystickOutputData) => console.log(evt, data)}
-        />
-
+    const onMove = (evt : JoystickEventTypes, data: JoystickOutputData) => {
+        context.networkManager.joyMove(data.angle.radian, data.distance)
+        console.log("input-joy",data.angle.radian, data.distance)
     }
 
-    onMove = (evt : JoystickEventTypes, data: JoystickOutputData) => {
-        console.log(evt, data)
-        //this.joySize = 400
-        this.forceUpdate()
-
+    const onMoveEnd = () => {
+        context.networkManager.joyMove(0,0)
     }
 
-    render() {
-        const joySize2 = this.joySize+0
-        console.log("joySize2", joySize2)
         const joy = <Nipple
-            options={{ mode: 'static', position: { top: '50%', left: '50%' } , size: joySize2}}
+            options={{ mode: 'static', position: { top: '50%', left: '50%' } , size: joySize}}
             style={{
                 width: 150,
                 height: 150
                 // if you pass position: 'relative', you don't need to import the stylesheet
             }}
-            onMove={(evt : JoystickEventTypes, data: JoystickOutputData) => this.onMove(evt,data)}
-            onEnd={(evt : JoystickEventTypes, data: JoystickOutputData) => console.log(evt, data)}
+            onMove={(evt : JoystickEventTypes, data: JoystickOutputData) => onMove(evt,data)}
+            onEnd={(evt : JoystickEventTypes, data: JoystickOutputData) => onMoveEnd()}
         />
             //= { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
 
@@ -73,6 +54,4 @@ export default class Controller extends React.Component<IProps, IState> {
                 <div className="controller-button button2"></div>
             </div>
         </div>
-
-    }
 }
