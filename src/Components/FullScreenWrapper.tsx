@@ -18,7 +18,7 @@ function FullScreenWrapper() {
           <FullScreen handle={handle}>
               <div>
                   <MainPage />
-                  </div>
+              </div>
           </FullScreen>
       </div>
   );

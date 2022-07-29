@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { ContextState } from './types';
 import { SocketContext } from './context/network';
 import Networkmanager from './Service/Networkmanager'
+import { BrowserRouter } from 'react-router-dom';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,7 +19,9 @@ const socketvalue: ContextState = {
 root.render(
   <React.StrictMode>
       <SocketContext.Provider value={socketvalue}>
-          <FullScreenWrapper />
+          <BrowserRouter>
+              <FullScreenWrapper />
+          </BrowserRouter>
       </SocketContext.Provider>
   </React.StrictMode>
 );

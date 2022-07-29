@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="470a8aee-436c-4370-8ec6-b95757bbfd71" name="Changes" comment="create-react-app">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/FullScreenWrapper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/FullScreenWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MainPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +74,7 @@
       <workItem from="1658690909377" duration="13270000" />
       <workItem from="1658832398030" duration="599000" />
       <workItem from="1658833186584" duration="652000" />
-      <workItem from="1658930325587" duration="5365000" />
+      <workItem from="1658930325587" duration="9909000" />
     </task>
     <task id="LOCAL-00001" summary="create-react-app">
       <created>1658337858419</created>

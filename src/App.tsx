@@ -18,15 +18,15 @@ function App() {
     }
 
     return (
-      <div>
-          <button onClick={handle.enter} id="enter-fullscreen-button">
-               Enter Fullscreen!
-          </button>
+          <div>
+              <button onClick={handle.enter} id="enter-fullscreen-button">
+                   Enter Fullscreen!
+              </button>
 
-          <FullScreen handle={handle}>
-              <Controller />
-          </FullScreen>
-      </div>
+              <FullScreen handle={handle}>
+                  <Controller />
+              </FullScreen>
+          </div>
   );
 }
 
