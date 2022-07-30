@@ -1,11 +1,12 @@
 import axios from 'axios';
+import React, { FormEventHandler, useContext, useState } from 'react';
 import {io, Socket} from "socket.io-client";
 import {ButtonBody, JoinGameBody, JoyMoveBody } from '../types/socket-requests';
 import {CreateGameResponse, JoinGameResponse, SocketResponse } from '../types/socket-responses';
 
 const wsUrl = process.env.REACT_APP_WS_URL || ""
 
-export default class Networkmanager {
+export default class NetworkService {
     socket : Socket
 
     connectedGame? : {

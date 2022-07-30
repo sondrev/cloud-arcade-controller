@@ -57,3 +57,10 @@
     font-size: 75px;
     color: #4b6cb7;
 }
+
+.form p {
+    margin: 0;
+    padding: 10px;
+    text-align: left;
+    color: red;
+}

@@ -1,32 +1,29 @@
 import React from 'react';
-import './App.css';
 
 
 import DeviceOrientation, { Orientation } from 'react-screen-orientation'
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import Controller from './Components/Controller'
+import { ContextState } from './types';
+import Networkmanager from './Service/Networkmanager';
+import { SocketContext } from './context/network';
+import { BrowserRouter } from 'react-router-dom';
+import FullScreenWrapper from './Components/FullScreenWrapper';
 
 function App() {
-  const handle = useFullScreenHandle();
 
-  if (window?.screen?.orientation) window.screen.orientation.onchange = function(e) {
-      //console.log(`Orientation change. Orentiation ${window.screen.orientation.angle}`)
-  }
-
-    const onLockOrientation = (val:any) => {
-        console.log("onlockor",val)
-    }
+    const socketvalue: ContextState = {
+        networkManager: new Networkmanager()
+    };
 
     return (
-          <div>
-              <button onClick={handle.enter} id="enter-fullscreen-button">
-                   Enter Fullscreen!
-              </button>
-
-              <FullScreen handle={handle}>
-                  <Controller />
-              </FullScreen>
-          </div>
+        <React.StrictMode>
+            <SocketContext.Provider value={socketvalue}>
+                <BrowserRouter>
+                    <FullScreenWrapper />
+                </BrowserRouter>
+            </SocketContext.Provider>
+        </React.StrictMode>
   );
 }
 

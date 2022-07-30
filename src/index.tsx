@@ -7,23 +7,16 @@ import { ContextState } from './types';
 import { SocketContext } from './context/network';
 import Networkmanager from './Service/Networkmanager'
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const socketvalue: ContextState = {
-    networkManager: new Networkmanager()
-};
+
 root.render(
-  <React.StrictMode>
-      <SocketContext.Provider value={socketvalue}>
-          <BrowserRouter>
-              <FullScreenWrapper />
-          </BrowserRouter>
-      </SocketContext.Provider>
-  </React.StrictMode>
+    <App />
 );
 
 // If you want to start measuring performance in your app, pass a function

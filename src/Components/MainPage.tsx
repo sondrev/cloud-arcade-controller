@@ -1,6 +1,5 @@
 import React, { FormEventHandler, useContext, useState } from 'react';
 import { useSearchParams } from "react-router-dom";
-import '../App.css';
 import '../login.css';
 
 
@@ -22,7 +21,10 @@ const randomNameConfig: Config = {
 export default function MainPage() {
     const nameInputRef: React.RefObject<HTMLInputElement> = React.createRef();
     const gameIdInputRef: React.RefObject<HTMLInputElement> = React.createRef();
+
     const [searchParams, setSearchParams] = useSearchParams();
+    const [errorMsg, setErrorMsg] = useSearchParams();
+
     const urlName = searchParams.get("name") || undefined
     const urlGameId = searchParams.get("game-id") || undefined
     const [screen, setScreen] = useState<"login" | "game">("login")
@@ -38,9 +40,9 @@ export default function MainPage() {
         const name = nameInputRef.current?.value || ""
         console.log(name)
         console.log(gameIdInputRef.current?.value)
-        context.networkManager.joinGame(gameId, name).then(() => {
+        context.networkManager.joinGame(gameId, name).then((data) => {
             setScreen("game")
-        }).catch(error => alert(error.message));
+        }).catch(error => alert(error));
     }
 
         // //pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
@@ -57,8 +59,9 @@ export default function MainPage() {
                         <h1>Login</h1>
                         <form className="login-form" onSubmit={onStart}>
                             <input type="name" ref={nameInputRef} placeholder="name" defaultValue={suggestedName} required/>
-                            <input type="gameId"  ref={gameIdInputRef} placeholder="game id" defaultValue={urlGameId} required/>
+                            <input type="gameId" ref={gameIdInputRef} placeholder="game id" defaultValue={urlGameId} required/>
                             <button type='submit'>Start</button>
+                            <p>{errorMsg}</p>
                         </form>
                     </div>
                 </div>
