@@ -1,14 +1,14 @@
-import React, { FormEventHandler, useContext, useState } from 'react';
+import React, {FormEventHandler, useContext, useEffect, useState} from 'react';
 import { useSearchParams } from "react-router-dom";
 import '../login.css';
+import {useNetworkService} from "../context/NetworkServiceContext";
 
 
 import { uniqueNamesGenerator, Config, adjectives, colors, animals } from 'unique-names-generator';
 import DeviceOrientation, { Orientation } from 'react-screen-orientation'
 import { FullScreen, FullScreenHandle, useFullScreenHandle } from "react-full-screen";
 import Controller from './Controller'
-import { SocketContext } from '../context/network';
-import { ContextState } from '../types';
+import NetworkService from "../Service/NetworkService";
 
 const randomNameConfig: Config = {
     dictionaries: [adjectives, colors, animals],
@@ -29,10 +29,12 @@ export default function MainPage() {
     const urlGameId = searchParams.get("game-id") || undefined
     const [screen, setScreen] = useState<"login" | "game">("login")
 
-    const context = useContext(SocketContext);
+    const networkService = useNetworkService();
+    console.log(networkService)
 
     const randomName = uniqueNamesGenerator(randomNameConfig);
     const suggestedName = urlName || randomName || undefined
+
 
     const onStart = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -40,17 +42,17 @@ export default function MainPage() {
         const name = nameInputRef.current?.value || ""
         console.log(name)
         console.log(gameIdInputRef.current?.value)
-        context.networkManager.joinGame(gameId, name).then((data) => {
+        networkService.joinGame(gameId, name).then((data) => {
             setScreen("game")
         }).catch(error => alert(error));
     }
 
+    const errorMessage = undefined
         // //pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-
 
         if (screen === "game") {
             return <div>
-                <Controller />
+                <Controller /><p>{errorMessage}</p>
             </div>
         } else {
             return <div>
@@ -61,7 +63,7 @@ export default function MainPage() {
                             <input type="name" ref={nameInputRef} placeholder="name" defaultValue={suggestedName} required/>
                             <input type="gameId" ref={gameIdInputRef} placeholder="game id" defaultValue={urlGameId} required/>
                             <button type='submit'>Start</button>
-                            <p>{errorMsg}</p>
+                            <p>{errorMessage}</p>
                         </form>
                     </div>
                 </div>

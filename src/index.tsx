@@ -3,9 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import FullScreenWrapper from './Components/FullScreenWrapper';
 import reportWebVitals from './reportWebVitals';
-import { ContextState } from './types';
-import { SocketContext } from './context/network';
-import Networkmanager from './Service/Networkmanager'
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 

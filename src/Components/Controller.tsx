@@ -1,6 +1,7 @@
 import React, {useContext, useState } from "react";
-import { SocketContext } from "../context/network";
 import Nipple from "./Nipple";
+import {useNetworkService} from "../context/NetworkServiceContext";
+import NetworkService from "../Service/NetworkService";
 
 const defaultOptions = { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
 const bigOpts = { mode: 'static', position: { top: '50%', left: '50%' } , size: 500}
@@ -19,15 +20,15 @@ export default function Controller() {
 
     const [joySize, setJoySize] = useState(200)
 
-    const context = useContext(SocketContext);
+    const networkService = useNetworkService() as unknown as NetworkService;
 
     const onMove = (evt : JoystickEventTypes, data: JoystickOutputData) => {
-        context.networkManager.joyMove(data.angle.radian, data.distance)
+        networkService.joyMove(data.angle.radian, data.distance)
         console.log("input-joy",data.angle.radian, data.distance)
     }
 
     const onMoveEnd = () => {
-        context.networkManager.joyMove(0,0)
+        networkService.joyMove(0,0)
     }
 
         const joy = <Nipple

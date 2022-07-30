@@ -1,5 +1,7 @@
 import Networkmanager from "./Service/Networkmanager"
+import NetworkService from "./Service/NetworkService";
 
-export interface ContextState {
-  networkManager: Networkmanager
+export interface NetworkServiceState {
+  errorMessage?: string
+  service: NetworkService
 }

@@ -32,6 +32,7 @@ export default class NetworkService {
 
 
     joinGame(gameId: string, name: string): Promise<void> {
+        console.log("Joining game")
         return new Promise((resolve, reject) => {
             if (!this.socket) {
                 reject('No socket connection.');
