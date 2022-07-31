@@ -9,6 +9,7 @@ import DeviceOrientation, { Orientation } from 'react-screen-orientation'
 import { FullScreen, FullScreenHandle, useFullScreenHandle } from "react-full-screen";
 import Controller from './Controller'
 import NetworkService from "../Service/NetworkService";
+import {NetworkServiceState} from "../types";
 
 const randomNameConfig: Config = {
     dictionaries: [adjectives, colors, animals],
@@ -23,14 +24,15 @@ export default function MainPage() {
     const gameIdInputRef: React.RefObject<HTMLInputElement> = React.createRef();
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [errorMsg, setErrorMsg] = useSearchParams();
+    const [name, setName] = useState<string>("null");
+    const [color, setColor] = useState<string>("null");
 
     const urlName = searchParams.get("name") || undefined
     const urlGameId = searchParams.get("game-id") || undefined
     const [screen, setScreen] = useState<"login" | "game">("login")
 
-    const networkService = useNetworkService();
-    console.log(networkService)
+    const ser = useNetworkService()
+    const {service, errorMessage} = ser
 
     const randomName = uniqueNamesGenerator(randomNameConfig);
     const suggestedName = urlName || randomName || undefined
@@ -40,19 +42,18 @@ export default function MainPage() {
         event.preventDefault()
         const gameId = gameIdInputRef.current?.value || ""
         const name = nameInputRef.current?.value || ""
-        console.log(name)
-        console.log(gameIdInputRef.current?.value)
-        networkService.joinGame(gameId, name).then((data) => {
+        service.joinGame(gameId, name).then((data) => {
+            setName(data.playerName)
+            setColor(data.playerColor)
             setScreen("game")
-        }).catch(error => alert(error));
+        }).catch(error => {console.log(error)});
     }
 
-    const errorMessage = undefined
         // //pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
 
         if (screen === "game") {
             return <div>
-                <Controller /><p>{errorMessage}</p>
+                <Controller name={name} color={color}/>
             </div>
         } else {
             return <div>

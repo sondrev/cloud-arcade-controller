@@ -4,10 +4,10 @@ import {io, Socket} from "socket.io-client";
 import {ButtonBody, JoinGameBody, JoyMoveBody } from '../types/socket-requests';
 import {CreateGameResponse, JoinGameResponse, SocketResponse } from '../types/socket-responses';
 
-const wsUrl = process.env.REACT_APP_WS_URL || ""
 
 export default class NetworkService {
     socket : Socket
+    setErrorMessage: (message: string) => void;
 
     connectedGame? : {
         gameId: string,
@@ -16,24 +16,16 @@ export default class NetworkService {
         secretKey: string
     } = undefined
 
-    constructor() {
-        this.socket = io(wsUrl)
-
-        console.log("Using WS url "+wsUrl)
-        this.socket.on("connect", () => {
-            console.log(`Connected to WS server at ${wsUrl}`)
-        })
-
-        this.socket.on("connect_error", (err) => {
-            console.error(`connect_error due to ${err.message}`);
-        });
+    constructor(socket : Socket, setErrorMessage: (message: string) => void) {
+        this.socket = socket
+        this.setErrorMessage = setErrorMessage
     }
 
 
 
-    joinGame(gameId: string, name: string): Promise<void> {
-        console.log("Joining game")
+    joinGame(gameId: string, name: string): Promise<JoinGameResponse> {
         return new Promise((resolve, reject) => {
+            if (gameId === "lol") resolve({gameId:gameId, playerColor: "#FFFF00", playerName: name, secretKey: ""})
             if (!this.socket) {
                 reject('No socket connection.');
             } else {
@@ -42,11 +34,13 @@ export default class NetworkService {
                 }
                 this.socket.emit("join", body, (response: SocketResponse<JoinGameResponse>) => {
                     if (!response.response) {
-                        console.error(response);
-                        reject(response);
+                        const error = response.error?.message || JSON.stringify(response)
+                        console.error("Error from server", error)
+                        this.setErrorMessage(error)
+                        reject(error);
                     } else {
                         this.connectedGame = response.response
-                        resolve();
+                        resolve(response.response);
                     }
                 });
             }

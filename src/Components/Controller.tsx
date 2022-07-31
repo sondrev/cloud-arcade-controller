@@ -2,6 +2,7 @@ import React, {useContext, useState } from "react";
 import Nipple from "./Nipple";
 import {useNetworkService} from "../context/NetworkServiceContext";
 import NetworkService from "../Service/NetworkService";
+import Joystick from "./ControllerParts/Joystick";
 
 const defaultOptions = { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
 const bigOpts = { mode: 'static', position: { top: '50%', left: '50%' } , size: 500}
@@ -9,6 +10,8 @@ const bigOpts = { mode: 'static', position: { top: '50%', left: '50%' } , size: 
 
 
 interface IProps {
+    name: string
+    color: string
 }
 
 interface IState {
@@ -16,11 +19,13 @@ interface IState {
     joySize: number;
 }
 
-export default function Controller() {
+export default function Controller({name, color}: IProps) {
 
     const [joySize, setJoySize] = useState(200)
 
-    const networkService = useNetworkService() as unknown as NetworkService;
+
+
+    const networkService = useNetworkService().service;
 
     const onMove = (evt : JoystickEventTypes, data: JoystickOutputData) => {
         networkService.joyMove(data.angle.radian, data.distance)
@@ -45,14 +50,19 @@ export default function Controller() {
 
         return <div className="controller">
             <div className="controller-member">
-                {joy}
+                <Joystick />
+            </div>
+            <div className="controller-member">
+                <p style={{backgroundColor: color}}>
+                    {name}
+                </p>
             </div>
 
             <div className="controller-member button-container ">
                 <div className="controller-button button1"></div>
             </div>
-            <div className="controller-member button-container">
-                <div className="controller-button button2"></div>
+            <div className="controller-member">
+                <Joystick />
             </div>
         </div>
 }
