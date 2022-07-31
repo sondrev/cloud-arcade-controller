@@ -1,0 +1,83 @@
+/* button layout */
+.directional-buttons {
+    /* Define the size of the grid */
+    /* Other things rely on this! Change at your own peril! */
+    width: 16rem;
+    height: 16rem;
+    /* display the buttons in a grid */
+    display: grid;
+    /* leave a little gap between columns/rows */
+    grid-gap: 0.0rem;
+    /* define a 3 x 3 grid with middle column/row larger */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* name the cells in the grid */
+    grid-template-areas: "....  up  ....."
+                       "left  ..  right"
+                       ".... down .....";
+}
+
+/* base button */
+.direction-button {
+    /* the button colours */
+    color: rgb(55, 50, 50);
+    /* since there's no text, we can use the color value for the background */
+    background: currentcolor;
+    /* clears default button styles */
+    border: none;
+    /* makes sure the triangles are moved relative to the button */
+    position: relative;
+    border-radius: 50%
+
+}
+
+.direction-button:before {
+    /* make the triangle display */
+    display: block;
+    content: "";
+    /* make the triangle able to be moved around relative to the button */
+    position:relative;
+    /* approximately makes the diagonal the right size */
+    width: 120%;
+    height: 120%;
+    left: calc(-10%);
+    /* position it so it overlaps just right */
+    bottom:  calc(10%);
+
+    border-radius: 50%;
+    /* rotate the square (to look like a triangle) */
+    /* use the current color value for the background to match the button */
+    background: currentcolor;
+}
+
+
+/* when the button is hovered */
+.direction-button:hover {
+    /* make the button a different color */
+    color: rgb(85,55,55);
+}
+
+/* when the button is pressed */
+.direction-button:active:after {
+    /* make the inner triangle a different color! */
+    color: rgb(255, 152, 152);
+}
+
+.up {
+    grid-area: up;
+}
+
+.left {
+    grid-area: left;
+}
+
+
+.right {
+    grid-area: right;
+}
+
+
+.down {
+    grid-area: down;
+}
+

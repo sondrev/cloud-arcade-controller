@@ -1,6 +1,6 @@
 import React, {FormEventHandler, useContext, useEffect, useState} from 'react';
 import { DefaultEventsMap } from 'socket.io/dist/typed-events';
-import { NetworkServiceState } from '../types';
+import { NetworkServiceState } from '../types/types'
 import NetworkService from "../Service/NetworkService";
 import {io} from "socket.io-client";
 

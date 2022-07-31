@@ -49,6 +49,11 @@ code {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
+.info-panel {
+  display: flex;
+  flex-direction: column;
+}
+
 #enter-fullscreen-button {
   z-index: 3;
   position: absolute;

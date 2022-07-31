@@ -9,7 +9,7 @@ import DeviceOrientation, { Orientation } from 'react-screen-orientation'
 import { FullScreen, FullScreenHandle, useFullScreenHandle } from "react-full-screen";
 import Controller from './Controller'
 import NetworkService from "../Service/NetworkService";
-import {NetworkServiceState} from "../types";
+import {NetworkServiceState} from "../types/types";
 
 const randomNameConfig: Config = {
     dictionaries: [adjectives, colors, animals],
@@ -38,6 +38,10 @@ export default function MainPage() {
     const suggestedName = urlName || randomName || undefined
 
 
+    const goToLogin = () => {
+        setScreen("login")
+    }
+
     const onStart = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const gameId = gameIdInputRef.current?.value || ""
@@ -53,7 +57,7 @@ export default function MainPage() {
 
         if (screen === "game") {
             return <div>
-                <Controller name={name} color={color}/>
+                <Controller name={name} color={color} exitController={goToLogin}/>
             </div>
         } else {
             return <div>

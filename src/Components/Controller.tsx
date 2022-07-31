@@ -3,6 +3,8 @@ import Nipple from "./Nipple";
 import {useNetworkService} from "../context/NetworkServiceContext";
 import NetworkService from "../Service/NetworkService";
 import Joystick from "./ControllerParts/Joystick";
+import {ControllerPart} from "../types/types";
+import FourButtons from "./ControllerParts/FourButtons";
 
 const defaultOptions = { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
 const bigOpts = { mode: 'static', position: { top: '50%', left: '50%' } , size: 500}
@@ -12,6 +14,7 @@ const bigOpts = { mode: 'static', position: { top: '50%', left: '50%' } , size: 
 interface IProps {
     name: string
     color: string
+    exitController: () => void
 }
 
 interface IState {
@@ -19,11 +22,7 @@ interface IState {
     joySize: number;
 }
 
-export default function Controller({name, color}: IProps) {
-
-    const [joySize, setJoySize] = useState(200)
-
-
+export default function Controller({name, color, exitController}: IProps) {
 
     const networkService = useNetworkService().service;
 
@@ -36,33 +35,30 @@ export default function Controller({name, color}: IProps) {
         networkService.joyMove(0,0)
     }
 
-        const joy = <Nipple
-            options={{ mode: 'static', position: { top: '50%', left: '50%' } , size: joySize}}
-            style={{
-                width: 150,
-                height: 150
-                // if you pass position: 'relative', you don't need to import the stylesheet
-            }}
-            onMove={(evt : JoystickEventTypes, data: JoystickOutputData) => onMove(evt,data)}
-            onEnd={(evt : JoystickEventTypes, data: JoystickOutputData) => onMoveEnd()}
-        />
-            //= { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
+    const renderSwitch = (type: ControllerPart) => {
+        switch(type) {
+            case 'joystcik':
+                return <Joystick />;
+            case 'buttons':
+                return <FourButtons />;
+        }
+    }
 
         return <div className="controller">
             <div className="controller-member">
-                <Joystick />
+                {renderSwitch("joystcik")}
             </div>
-            <div className="controller-member">
+            <div className="controller-member info-panel">
                 <p style={{backgroundColor: color}}>
                     {name}
                 </p>
+                <button onClick={exitController}>
+                    Go back
+                </button>
             </div>
 
-            <div className="controller-member button-container ">
-                <div className="controller-button button1"></div>
-            </div>
             <div className="controller-member">
-                <Joystick />
+                {renderSwitch("buttons")}
             </div>
         </div>
 }
