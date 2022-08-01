@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc2e0a0f-983a-4d6c-ae28-5c26faab8f27" name="Changes" comment="semi working">
-      <change afterPath="$PROJECT_DIR$/src/Components/ControllerParts/FourButtons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/four-buttons.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/ControllerParts/SimpleButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Controller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Controller.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/MainPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/MainPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/NetworkServiceContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/NetworkServiceContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ControllerParts/FourButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControllerParts/FourButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/four-buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/four-buttons.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1659199507791</updated>
-      <workItem from="1659199510597" duration="18298000" />
+      <workItem from="1659199510597" duration="20648000" />
     </task>
     <task id="LOCAL-00001" summary="semi working">
       <created>1659218684864</created>

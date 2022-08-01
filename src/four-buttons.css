@@ -50,19 +50,6 @@
     background: currentcolor;
 }
 
-
-/* when the button is hovered */
-.direction-button:hover {
-    /* make the button a different color */
-    color: rgb(85,55,55);
-}
-
-/* when the button is pressed */
-.direction-button:active:after {
-    /* make the inner triangle a different color! */
-    color: rgb(255, 152, 152);
-}
-
 .up {
     grid-area: up;
 }
@@ -81,3 +68,12 @@
     grid-area: down;
 }
 
+
+.pressed.direction-button:before {
+    color: red;
+    width: 130%;
+    height: 130%;
+    left: calc(-15%);
+    /* position it so it overlaps just right */
+    bottom:  calc(15%);
+}
