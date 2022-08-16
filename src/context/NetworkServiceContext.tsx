@@ -34,6 +34,10 @@ export const NetworkServiceProvider = (props: any) => {
             setIsConnected(true);
         });
 
+        socket.on('ping-controller', (callback: () => void) => {
+            callback()
+        });
+
         socket.on('disconnect', () => {
             setIsConnected(false);
         });
