@@ -4,13 +4,13 @@ import {useNetworkService} from "../../context/NetworkServiceContext";
 import '../../four-buttons.css'
 import SimpleButton from "./SimpleButton";
 
-export default function FourButtons() {
+export default function FourButtons({componentId}: { componentId:number}) {
     const networkService = useNetworkService().service;
 
         return <div className="directional-buttons">
-            <SimpleButton buttonId={1} dir={"up"} />
-            <SimpleButton buttonId={2} dir={"left"} />
-            <SimpleButton buttonId={3} dir={"right"} />
-            <SimpleButton buttonId={4} dir={"down"} />
+            <SimpleButton componentId={componentId} buttonId={1} dir={"up"} />
+            <SimpleButton componentId={componentId} buttonId={2} dir={"left"} />
+            <SimpleButton componentId={componentId} buttonId={3} dir={"right"} />
+            <SimpleButton componentId={componentId} buttonId={4} dir={"down"} />
         </div>
 }

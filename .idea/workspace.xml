@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc2e0a0f-983a-4d6c-ae28-5c26faab8f27" name="Changes" comment="semi working">
-      <change afterPath="$PROJECT_DIR$/src/Components/ControllerParts/SimpleButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/DefaultController.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/cloud-aracde-api.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Controller.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Controller.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/ControllerParts/FourButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControllerParts/FourButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/four-buttons.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/four-buttons.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ControllerParts/Joystick.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControllerParts/Joystick.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/ControllerParts/SimpleButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/ControllerParts/SimpleButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/NetworkService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/NetworkService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/NetworkServiceContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/NetworkServiceContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/socket-requests.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/socket-responses.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/types.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +62,9 @@
       <recent name="$PROJECT_DIR$/src/types" />
       <recent name="$PROJECT_DIR$/src/Components/ControllerParts" />
     </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/context/DefaultController.tsx" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -64,7 +74,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1659199507791</updated>
-      <workItem from="1659199510597" duration="20648000" />
+      <workItem from="1659199510597" duration="21301000" />
+      <workItem from="1660501944678" duration="765000" />
+      <workItem from="1660571086420" duration="4654000" />
     </task>
     <task id="LOCAL-00001" summary="semi working">
       <created>1659218684864</created>

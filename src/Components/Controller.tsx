@@ -5,6 +5,7 @@ import NetworkService from "../Service/NetworkService";
 import Joystick from "./ControllerParts/Joystick";
 import {ControllerPart} from "../types/types";
 import FourButtons from "./ControllerParts/FourButtons";
+import {ButtonsControllerComponent, ControllerComponent, ControllerLayout} from "../types/cloud-aracde-api";
 
 const defaultOptions = { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
 const bigOpts = { mode: 'static', position: { top: '50%', left: '50%' } , size: 500}
@@ -24,29 +25,20 @@ interface IState {
 
 export default function Controller({name, color, exitController}: IProps) {
 
-    const networkService = useNetworkService().service;
+    const layout = useNetworkService().layout
 
-    const onMove = (evt : JoystickEventTypes, data: JoystickOutputData) => {
-        networkService.joyMove(data.angle.radian, data.distance)
-        console.log("input-joy",data.angle.radian, data.distance)
-    }
-
-    const onMoveEnd = () => {
-        networkService.joyMove(0,0)
-    }
-
-    const renderSwitch = (type: ControllerPart) => {
-        switch(type) {
-            case 'joystcik':
-                return <Joystick />;
+    const renderSwitch = (component: ControllerComponent) => {
+        switch(component.type) {
+            case 'joy':
+                return <Joystick componentId={component.id}/>;
             case 'buttons':
-                return <FourButtons />;
+                return <FourButtons componentId={component.id}/>;
         }
     }
 
         return <div className="controller">
             <div className="controller-member">
-                {renderSwitch("joystcik")}
+                {renderSwitch(layout.left)}
             </div>
             <div className="controller-member info-panel">
                 <p style={{backgroundColor: color}}>
@@ -58,7 +50,7 @@ export default function Controller({name, color, exitController}: IProps) {
             </div>
 
             <div className="controller-member">
-                {renderSwitch("buttons")}
+                {renderSwitch(layout.right)}
             </div>
         </div>
 }

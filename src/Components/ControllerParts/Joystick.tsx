@@ -2,7 +2,7 @@ import React, {useContext, useState } from "react";
 import Nipple from "../Nipple";
 import {useNetworkService} from "../../context/NetworkServiceContext";
 
-export default function Joystick() {
+export default function Joystick( {componentId}: { componentId:number}) {
 
     const [joySize, setJoySize] = useState(200)
 
@@ -10,12 +10,12 @@ export default function Joystick() {
     const networkService = useNetworkService().service;
 
     const onMove = (evt : JoystickEventTypes, data: JoystickOutputData) => {
-        networkService.joyMove(data.angle.radian, data.distance)
+        networkService.joyMove(componentId, data.angle.radian, data.distance)
         console.log("input-joy",data.angle.radian, data.distance)
     }
 
     const onMoveEnd = () => {
-        networkService.joyMove(0,0)
+        networkService.joyMove(componentId, 0,0)
     }
 
         const joy = <Nipple
