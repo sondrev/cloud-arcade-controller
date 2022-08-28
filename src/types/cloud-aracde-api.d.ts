@@ -124,20 +124,30 @@ export interface PlayerPressedButtonData {
  * Shared data
  */
 
-type ControllerComponent = JoyControllerComponent | ArrowsControllerComponent | ButtonsControllerComponent
+type ControllerComponent =
+    JoyControllerComponent |
+    ArrowsControllerComponent |
+    ButtonsControllerComponent |
+    TextControllerComponent
 
-interface JoyControllerComponent {
-    id: number
+interface ControllerComponentBase {
+    componentId: number
+}
+
+interface JoyControllerComponent extends ControllerComponentBase{
     type: "joy"
 }
 
-interface ArrowsControllerComponent {
-    id: number
+interface ArrowsControllerComponent extends ControllerComponentBase{
     type: "arrows"
 }
 
-interface ButtonsControllerComponent {
-    id: number
+interface ButtonsControllerComponent extends ControllerComponentBase{
     type: "buttons"
     buttons: {buttonId: number, label?: string, holdable: boolean}[]
+}
+
+interface TextControllerComponent extends ControllerComponentBase{
+    type: "text"
+    text: string
 }

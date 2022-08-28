@@ -6,6 +6,7 @@ import Joystick from "./ControllerParts/Joystick";
 import {ControllerPart} from "../types/types";
 import FourButtons from "./ControllerParts/FourButtons";
 import {ButtonsControllerComponent, ControllerComponent, ControllerLayout} from "../types/cloud-aracde-api";
+import Textfield from "./ControllerParts/Textfield";
 
 const defaultOptions = { mode: 'static', position: { top: '50%', left: '50%' } , size: 200}
 const bigOpts = { mode: 'static', position: { top: '50%', left: '50%' } , size: 500}
@@ -30,9 +31,11 @@ export default function Controller({name, color, exitController}: IProps) {
     const renderSwitch = (component: ControllerComponent) => {
         switch(component.type) {
             case 'joy':
-                return <Joystick componentId={component.id}/>;
+                return <Joystick componentId={component.componentId}/>;
             case 'buttons':
-                return <FourButtons componentId={component.id}/>;
+                return <FourButtons componentId={component.componentId}/>;
+            case 'text':
+                return <Textfield text={component.text}/>;
         }
     }
 
